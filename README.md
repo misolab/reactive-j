@@ -5,5 +5,7 @@
 Retrofit Example  
 https://academy.realm.io/kr/posts/retrofit2-for-http-requests/  
 http://devflow.github.io/retrofit-kr/
+https://thdev.tech/androiddev/2016/11/13/Android-Retrofit-Intro.html
 
+rxjava2를 사용할경우 버전체크를 잘하자
 

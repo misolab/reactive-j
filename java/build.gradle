@@ -20,4 +20,15 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:2.4.0"
     compile "com.squareup.retrofit2:converter-gson:2.4.0"
 
+    /*
+    *   RxJava2CallAdapterFactory가 생성이 안된다는 익셉션을 엄청보았다
+    *   해결은 : adapter-rxjava2
+    *   잘보아야 할것이 adapter-rxjava는 1버전이니다 retrofit2에 1버전
+    * */
+
+    compile "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    // https://mvnrepository.com/artifact/com.squareup.retrofit2/adapter-rxjava
+//    compile group: 'com.squareup.retrofit2', name: 'adapter-rxjava', version: '2.4.0'
+
+
 }
