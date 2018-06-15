@@ -1,16 +1,61 @@
 package misolab.book.rxjava;
 
+import io.reactivex.Maybe;
 import io.reactivex.Observable;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class Ch3 {
 
+    public static final Predicate<Integer> INTEGER_PREDICATE = i -> i % 2 > 0;
+    public static final io.reactivex.functions.Predicate<Integer> INTEGER_PREDICATE1 = i -> i % 2 > 0;
+
     public static void main(String[] args) {
         Ch3 ch3 = new Ch3();
+
+//        map & flatMap
 //        ch3.testMap();
-        ch3.testStream();
+//        ch3.testStream();
+
+//        filter
+//        ch3.rxFilter();
+//        ch3.streamFilter();
+
+//        ch3.rxReduce();
+        ch3.streamReduce();
+
+    }
+
+    private void streamReduce() {
+        System.out.println(
+                Arrays.stream(balls)
+                        .reduce((ball1, ball2) -> String.format("%s(%s)", ball2, ball1))
+                        .get()
+        );
+    }
+
+    String[] balls = {"1", "3", "5"};
+    private void rxReduce() {
+        Maybe<String> source = Observable.fromArray(balls)
+                .reduce((ball1, ball2) -> String.format("%s(%s)", ball2, ball1));
+        source.subscribe(System.out::println);
+    }
+
+    private void streamFilter() {
+        Stream.iterate(1, a -> a + 1)
+                .limit(9)
+                .filter(INTEGER_PREDICATE)
+                .forEach(System.out::println);
+    }
+
+    private void rxFilter() {
+        Observable<Integer> source = Observable.range(1, 9)
+                .filter(INTEGER_PREDICATE1);
+
+        source.subscribe(System.out::println);
     }
 
     private void testStream() {
